@@ -47,7 +47,7 @@ def main(local = True, difficulty = 5):
         for event in pygame.event.get():
             if event.type == KEYDOWN and event.key == K_SPACE:
                 print("started")
-                ball.vector = [math.pi/4,difficulty]
+                ball.vector = [math.pi/4*random.random()+0.2,difficulty]
                 init = False
     #TODO: add and keep score
     while ball.alive:

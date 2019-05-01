@@ -1,6 +1,8 @@
 import pygame
+import random
 import math
 from BallGame.resource_handling import Loader
+
 
 #ALL RENDERED OBJECTS MUST INHERIT FROM SPRITE
 
@@ -27,16 +29,24 @@ class Ball(pygame.sprite.Sprite):
 
         #border collision detection
         if not (self.area.contains(new_pos)):
-            print('border collision')
-            #TODO: border collision
-            #-> detect which border  (down -> lost,
-            # right angle = pi - angle,
-            # upper - > anlge + 2* pi -angle
-            # left ...
+            angle, speed = self.vector
+            if not self.area.collidepoint(new_pos.topleft) and not self.area.collidepoint(new_pos.topright):
+                #topcollision
+                angle = angle + 3*math.pi/2
+                angle %= math.pi*2
+            elif not self.area.collidepoint(new_pos.bottomleft) and not self.area.collidepoint(new_pos.bottomright):
+                self.alive = False
+                self.speed = 0
+            else:
+                #side wall
+                angle  = -angle + math.pi
+                angle %= 2*math.pi
+
+            self.vector = angle, speed
 
         #player collision detection
         if self.player.rect.colliderect(new_pos):
-            angle =  -angle
+            angle =  -(angle)
             self.vector = (angle,speed)
 
 

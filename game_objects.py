@@ -13,7 +13,7 @@ class Ball(pygame.sprite.Sprite):
     '''
     def __init__(self,vector,player):
         pygame.sprite.Sprite.__init__(self)
-        self.image = Loader.load_png("ball_trans.png")
+        self.image = Loader.load_png("ball.png")
         self.rect = self.image.get_rect()
         self.rect.midbottom = player.rect.midtop
         screen = pygame.display.get_surface()

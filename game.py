@@ -6,7 +6,7 @@ import getopt
 import pygame
 from socket import *
 from pygame.locals import *
-from BallGame.game_objects import Bar, Ball
+from game_objects import Bar, Ball
 
 def main(local = True, difficulty = 5):
     '''

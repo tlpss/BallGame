@@ -1,7 +1,7 @@
 import pygame
 import random
 import math
-from BallGame.resource_handling import Loader
+from resource_handling import Loader
 
 
 #ALL RENDERED OBJECTS MUST INHERIT FROM SPRITE
